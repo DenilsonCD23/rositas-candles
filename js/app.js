@@ -14,8 +14,10 @@ const modalDescription = document.querySelector('#modal-description');
 const modalPrice = document.querySelector('#modal-price');
 const modalWhatsapp = document.querySelector('#modal-whatsapp');
 const modalClose = document.querySelector('#modal-close');
+const categoryFilters = document.querySelector('#category-filters');
 
 let products = [];
+let activeCategory = 'todas';
 
 function normalizeText(value) {
   return String(value)
@@ -49,11 +51,11 @@ function validateProducts(value) {
 }
 
 async function loadProducts() {
+  let localCatalog = [];
   const localProducts = localStorage.getItem(STORAGE_KEY);
   if (localProducts) {
     try {
-      const parsed = validateProducts(JSON.parse(localProducts));
-      if (parsed.length) return parsed;
+      localCatalog = validateProducts(JSON.parse(localProducts));
     } catch (error) {
       console.warn('No se pudo leer el catálogo local.', error);
     }
@@ -61,7 +63,16 @@ async function loadProducts() {
 
   const response = await fetch(PRODUCTS_URL);
   if (!response.ok) throw new Error(`No se pudo cargar ${PRODUCTS_URL}`);
-  return validateProducts(await response.json());
+  const defaultCatalog = validateProducts(await response.json());
+  if (!localCatalog.length) return defaultCatalog;
+
+  const defaultCategories = new Map(defaultCatalog.map(product => [product.id, product.categorias]));
+  return localCatalog.map(product => ({
+    ...product,
+    categorias: Array.isArray(product.categorias) && product.categorias.length
+      ? product.categorias
+      : defaultCategories.get(product.id) || ['decorativas']
+  }));
 }
 
 function productCard(product, index) {
@@ -109,8 +120,23 @@ function renderProducts(list) {
 
 function filterProducts() {
   const query = normalizeText(searchInput.value);
-  const filtered = products.filter(product => normalizeText(product.nombre).includes(query));
+  const filtered = products.filter(product => {
+    const matchesSearch = normalizeText(product.nombre).includes(query);
+    const categories = Array.isArray(product.categorias) ? product.categorias : [];
+    const matchesCategory = activeCategory === 'todas' || categories.includes(activeCategory);
+    return matchesSearch && matchesCategory;
+  });
   renderProducts(filtered);
+}
+
+function selectCategory(button) {
+  activeCategory = button.dataset.category;
+  categoryFilters.querySelectorAll('.category-filter').forEach(filter => {
+    const isActive = filter === button;
+    filter.classList.toggle('is-active', isActive);
+    filter.setAttribute('aria-pressed', String(isActive));
+  });
+  filterProducts();
 }
 
 function openProduct(product) {
@@ -138,9 +164,13 @@ grid.addEventListener('click', event => {
 });
 
 searchInput.addEventListener('input', filterProducts);
+categoryFilters.addEventListener('click', event => {
+  const button = event.target.closest('.category-filter');
+  if (button) selectCategory(button);
+});
 clearSearchButton.addEventListener('click', () => {
   searchInput.value = '';
-  filterProducts();
+  selectCategory(categoryFilters.querySelector('[data-category="todas"]'));
   searchInput.focus();
 });
 modalClose.addEventListener('click', closeModal);

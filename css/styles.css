@@ -379,6 +379,36 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); }
   background: var(--white);
   box-shadow: var(--shadow-sm);
 }
+.category-filters {
+  display: flex;
+  gap: 10px;
+  margin: 6px 0 20px;
+  padding: 3px 2px 9px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rose-300) transparent;
+}
+.category-filter {
+  flex: 0 0 auto;
+  min-height: 42px;
+  padding: 9px 18px;
+  color: var(--rose-800);
+  border: 1px solid var(--rose-200);
+  border-radius: 999px;
+  cursor: pointer;
+  background: rgba(255,255,255,.72);
+  font-size: .86rem;
+  font-weight: 750;
+  transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.category-filter:hover { border-color: var(--rose-500); transform: translateY(-1px); }
+.category-filter:focus-visible { outline: 3px solid var(--rose-300); outline-offset: 2px; }
+.category-filter.is-active {
+  color: var(--white);
+  border-color: var(--rose-800);
+  background: var(--rose-800);
+  box-shadow: 0 7px 18px rgba(123, 49, 89, .2);
+}
 .catalog-meta { min-height: 30px; margin-bottom: 18px; }
 .catalog-meta p { color: var(--rose-700); font-size: .86rem; font-weight: 750; }
 
@@ -458,6 +488,24 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); }
 .empty-state span { color: var(--rose-400); font-size: 3rem; }
 .empty-state h3 { margin: 8px 0; color: var(--rose-900); font-family: Georgia, serif; font-size: 1.7rem; }
 .empty-state p { color: var(--muted); }
+
+.custom-candles-section { padding: 75px 0 0; background: var(--cream); }
+.custom-candles-card {
+  display: grid;
+  padding: clamp(32px, 5vw, 55px);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 90% 10%, rgba(244, 204, 220, .3), transparent 32%),
+    linear-gradient(135deg, var(--rose-800), var(--plum));
+  box-shadow: var(--shadow-md);
+  grid-template-columns: 1fr auto;
+  gap: 42px;
+  align-items: center;
+}
+.custom-candles-card h2 { margin-bottom: 14px; color: var(--white); }
+.custom-candles-card p:last-child { max-width: 720px; margin-bottom: 0; color: var(--rose-100); }
+.custom-candles-card .button { white-space: nowrap; }
 
 .contact-section { padding: 90px 0; background: var(--cream); }
 .contact-card {
@@ -639,6 +687,8 @@ input[type="file"] { padding: 9px; font-size: .86rem; }
   .hero-grid { gap: 25px; }
   .hero-visual { min-height: 400px; }
   .contact-card { grid-template-columns: 1fr; }
+  .custom-candles-card { grid-template-columns: 1fr; gap: 24px; }
+  .custom-candles-card .button { width: fit-content; }
   .contact-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .admin-layout { grid-template-columns: 1fr; }
   .product-editor { position: static; }
@@ -662,6 +712,7 @@ input[type="file"] { padding: 9px; font-size: .86rem; }
   .aromas-card { grid-template-columns: 1fr; }
   .catalog-heading { display: grid; }
   .search-box { width: 100%; flex-basis: auto; }
+  .category-filters { margin-inline: -16px; padding-inline: 16px; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
   .product-content { padding: 14px; }
   .product-content h3 { font-size: 1rem; }
@@ -688,6 +739,10 @@ input[type="file"] { padding: 9px; font-size: .86rem; }
   .aromas-list { gap: 8px; }
   .aromas-list li { padding: 7px 11px; font-size: .78rem; }
   .catalog-section { padding: 70px 0; }
+  .category-filter { min-height: 40px; padding: 8px 15px; }
+  .custom-candles-section { padding-top: 55px; }
+  .custom-candles-card { border-radius: 22px; }
+  .custom-candles-card .button { width: 100%; }
   .product-grid { grid-template-columns: 1fr; gap: 18px; }
   .product-image-button { aspect-ratio: 1.12 / 1; }
   .product-content h3 { min-height: 0; font-size: 1.15rem; }
