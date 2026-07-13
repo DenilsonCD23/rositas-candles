@@ -1,0 +1,11 @@
+# Material original y archivos de trabajo que no usa el sitio publicado
+imagenesvelas/
+previews/
+Rosita's Candles Catalogo.pdf
+logo.jpeg
+logoporadat.jpeg
+
+# Archivos temporales del editor
+.~lock.*
+*~
+

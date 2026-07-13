@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#a24c7c">
+  <meta name="description" content="Catálogo digital de velas artesanales de Rosita’s Candles. Arte en cera, hecho con dedicación.">
+  <title>Rosita’s Candles | Arte en cera</title>
+  <link rel="icon" href="assets/images/logo.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#catalogo">Ir al catálogo</a>
+
+  <header class="site-header" id="inicio">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Rosita’s Candles, inicio">
+        <img src="assets/images/logo.jpeg" alt="Logo de Rosita’s Candles: Arte en cera" width="64" height="64">
+        <span class="brand-copy">
+          <strong>Rosita’s Candles</strong>
+          <small>Arte en cera</small>
+        </span>
+      </a>
+      <nav aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Velas artesanales de soya</p>
+          <h1 id="hero-title">Pequeños detalles que <em>iluminan</em> tus momentos</h1>
+          <p>Velas artesanales elaboradas con dedicación. Elige el diseño que más te guste, envíanos una captura por WhatsApp y realizaremos tu pedido.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#catalogo">Explorar catálogo</a>
+            <a class="button button-soft whatsapp-link" href="https://wa.me/59178365055" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+          </div>
+          <div class="hero-notes" aria-label="Características">
+            <span>Hechas con dedicación</span>
+            <span>Diseños a elección</span>
+            <span>Pedidos por WhatsApp</span>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="logo-halo"></div>
+          <img src="assets/images/logo.jpeg" alt="" width="520" height="507">
+          <span class="spark spark-one">✦</span>
+          <span class="spark spark-two">✦</span>
+          <span class="spark spark-three">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-it-works" aria-labelledby="steps-title">
+      <div class="container">
+        <div class="section-heading compact-heading">
+          <p class="eyebrow">Así de fácil</p>
+          <h2 id="steps-title">Elige tu vela favorita</h2>
+        </div>
+        <ol class="steps-list">
+          <li><span>1</span><div><strong>Explora</strong><small>Encuentra el diseño que te guste.</small></div></li>
+          <li><span>2</span><div><strong>Mira en detalle</strong><small>Amplía la foto y toma una captura.</small></div></li>
+          <li><span>3</span><div><strong>Pide por WhatsApp</strong><small>Envíanos el modelo y coordinamos.</small></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="aromas-section" aria-labelledby="aromas-title">
+      <div class="container aromas-card">
+        <div class="aromas-heading">
+          <p class="eyebrow">Personaliza tu pedido</p>
+          <h2 id="aromas-title">Aromas disponibles</h2>
+          <p class="aromas-note"><strong>Puedes agregar cualquiera de estos aromas a cualquier vela.</strong> Tú eliges el diseño y el aroma que prefieras.</p>
+        </div>
+        <ul class="aromas-list">
+          <li>Chocolate caliente</li>
+          <li>Café de Venecia</li>
+          <li>Lavanda</li>
+          <li>Coco</li>
+          <li>Vainilla</li>
+          <li>Cítrico</li>
+          <li>Limón</li>
+          <li>Frutilla</li>
+          <li>Sandía</li>
+          <li>Mango</li>
+          <li>Baby bear</li>
+          <li>Sofisticación</li>
+          <li>Lluvia morada</li>
+          <li>Manzana</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="catalog-section" id="catalogo" aria-labelledby="catalog-title">
+      <div class="container">
+        <div class="section-heading catalog-heading">
+          <div>
+            <p class="eyebrow">Hechas para ti</p>
+            <h2 id="catalog-title">Nuestro catálogo</h2>
+            <p>Selecciona una imagen para verla en grande o pide directamente el modelo que prefieras.</p>
+          </div>
+          <label class="search-box">
+            <span class="sr-only">Buscar una vela</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.15A7.5 7.5 0 1 1 4 11.5a7.5 7.5 0 0 1 15 0Z"/></svg>
+            <input id="product-search" type="search" placeholder="Buscar una vela…" autocomplete="off">
+          </label>
+        </div>
+        <div class="catalog-meta">
+          <p id="product-count" aria-live="polite">Cargando catálogo…</p>
+        </div>
+        <div class="product-grid" id="product-grid" aria-live="polite" aria-busy="true"></div>
+        <div class="empty-state" id="empty-state" hidden>
+          <span>♡</span>
+          <h3>No encontramos esa vela</h3>
+          <p>Prueba con otro nombre o revisa todos nuestros diseños.</p>
+          <button class="button button-soft" id="clear-search" type="button">Ver todo el catálogo</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contacto" aria-labelledby="contact-title">
+      <div class="container contact-card">
+        <div>
+          <p class="eyebrow light">Estamos para ayudarte</p>
+          <h2 id="contact-title">¿Ya elegiste tu vela?</h2>
+          <p>Envíanos una captura del modelo y coordinaremos contigo la elaboración y entrega de tu pedido.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="button button-white whatsapp-link" href="https://wa.me/59178365055" target="_blank" rel="noopener">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.2 24l6.4-1.7A11.8 11.8 0 0 0 24 11.8a11.7 11.7 0 0 0-3.5-8.3ZM12.1 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.7 9.7 0 1 1 8.4 4.7Zm5.3-7.3c-.3-.1-1.7-.8-2-.9-.2-.1-.4-.1-.6.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-1.8-.7-3.3-2.1-4.2-3.8-.3-.5.3-.5.9-1.7.1-.2 0-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.3 3.4 1.5 3.6c.1.2 2.5 3.8 6.1 5.3 2.3 1 3.2 1.1 4.4.9.7-.1 1.7-.7 1.9-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3Z"/></svg>
+            WhatsApp
+          </a>
+          <a class="button button-outline-light" href="https://www.facebook.com/share/1HeSn1WA6L/?mibextid=wwXIfr" target="_blank" rel="noopener">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4h-3V12h3V9.4c0-3 1.8-4.7 4.6-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.3l-.5 3.5H14v8.4A12 12 0 0 0 24 12Z"/></svg>
+            Facebook
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/images/logo.jpeg" alt="" width="48" height="48">
+        <div><strong>Rosita’s Candles</strong><small>Arte en cera</small></div>
+      </div>
+      <p>Velas artesanales elaboradas con dedicación.</p>
+      <p>© <span id="current-year"></span> Rosita’s Candles</p>
+    </div>
+  </footer>
+
+  <a class="floating-whatsapp whatsapp-link" href="https://wa.me/59178365055" target="_blank" rel="noopener" aria-label="Contactar a Rosita’s Candles por WhatsApp">
+    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.2 24l6.4-1.7A11.8 11.8 0 0 0 24 11.8a11.7 11.7 0 0 0-3.5-8.3ZM12.1 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.7 9.7 0 1 1 8.4 4.7Zm5.3-7.3c-.3-.1-1.7-.8-2-.9-.2-.1-.4-.1-.6.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-1.8-.7-3.3-2.1-4.2-3.8-.3-.5.3-.5.9-1.7.1-.2 0-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.3 3.4 1.5 3.6c.1.2 2.5 3.8 6.1 5.3 2.3 1 3.2 1.1 4.4.9.7-.1 1.7-.7 1.9-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3Z"/></svg>
+  </a>
+
+  <dialog class="image-modal" id="image-modal" aria-labelledby="modal-title">
+    <div class="modal-shell">
+      <button class="modal-close" id="modal-close" type="button" aria-label="Cerrar imagen">×</button>
+      <div class="modal-image-wrap">
+        <img id="modal-image" src="" alt="">
+      </div>
+      <div class="modal-details">
+        <div>
+          <p class="eyebrow">Modelo seleccionado</p>
+          <h2 id="modal-title"></h2>
+          <p class="modal-description" id="modal-description"></p>
+          <p class="modal-price" id="modal-price"></p>
+        </div>
+        <a class="button button-primary" id="modal-whatsapp" href="#" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>
