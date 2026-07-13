@@ -653,6 +653,27 @@ input[type="file"] { padding: 9px; font-size: .86rem; }
 .panel-heading h2, .admin-list-heading h2 { margin: 0; font-family: Georgia, serif; font-size: 1.65rem; }
 .icon-button { width: 36px; height: 36px; padding: 0 0 2px; color: var(--rose-800); border: 1px solid var(--border); border-radius: 50%; cursor: pointer; background: var(--rose-50); font-size: 1.5rem; }
 .product-editor input, .product-editor textarea { margin-bottom: 16px; }
+.category-selector { padding: 0; margin: 0 0 18px; border: 0; }
+.category-selector legend { margin-bottom: 9px; color: var(--rose-900); font-size: .83rem; font-weight: 800; }
+.category-selector legend span { color: var(--muted); font-weight: 600; }
+.category-options { display: flex; flex-wrap: wrap; gap: 8px; }
+.product-editor .category-option {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  margin: 0;
+  color: var(--rose-800);
+  border: 1px solid var(--rose-200);
+  border-radius: 999px;
+  cursor: pointer;
+  background: var(--rose-50);
+  font-size: .78rem;
+  font-weight: 750;
+}
+.product-editor .category-option:has(input:checked) { color: var(--white); border-color: var(--rose-700); background: var(--rose-700); }
+.product-editor .category-option input { width: 15px; height: 15px; margin: 0; accent-color: var(--rose-900); }
+.category-selector .field-help { margin: 8px 0 0; }
 .field-help { margin: -10px 0 14px; color: var(--muted); font-size: .75rem; line-height: 1.4; }
 .image-preview { margin-bottom: 16px; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--rose-50); aspect-ratio: 1; }
 .image-preview img { width: 100%; height: 100%; object-fit: contain; }
@@ -678,6 +699,8 @@ input[type="file"] { padding: 9px; font-size: .86rem; }
 .admin-product-copy strong { display: block; overflow: hidden; color: var(--rose-950); text-overflow: ellipsis; white-space: nowrap; }
 .admin-product-copy span { color: var(--rose-700); font-size: .86rem; font-weight: 800; }
 .admin-product-copy small { display: block; color: var(--muted); }
+.admin-category-tags { display: flex; flex-wrap: wrap; gap: 4px; margin: 5px 0; }
+.admin-category-tags span { padding: 2px 7px; color: var(--rose-800); border-radius: 999px; background: var(--rose-100); font-size: .68rem; font-weight: 750; }
 .admin-item-actions { display: flex; gap: 6px; }
 .admin-item-actions button { min-height: 36px; padding: 7px 10px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; background: var(--white); font-size: .78rem; font-weight: 750; }
 .admin-item-actions .delete-button { color: var(--danger); }
