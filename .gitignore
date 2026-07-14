@@ -8,3 +8,7 @@ Rosita's Candles Catalogo.pdf
 # Archivos temporales del editor
 .~lock.*
 *~
+
+# Administración privada: solo existe en esta computadora
+/admin.html
+/js/admin.js

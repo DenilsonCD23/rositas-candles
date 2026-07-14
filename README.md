@@ -1,6 +1,6 @@
 # Rosita’s Candles — catálogo digital
 
-Sitio web estático para mostrar el catálogo real de Rosita’s Candles y recibir pedidos mediante WhatsApp. Incluye 36 productos activos del catálogo, sus detalles, precios en bolivianos y las fotografías originales extraídas del PDF.
+Sitio web estático para mostrar el catálogo real de Rosita’s Candles y recibir pedidos mediante WhatsApp. Incluye 56 productos activos, sus detalles, precios en bolivianos y fotografías.
 
 ## Abrir el sitio en la computadora
 
@@ -13,21 +13,13 @@ python3 -m http.server 8000
 Luego visita:
 
 - Catálogo: <http://localhost:8000/>
-- Administración: <http://localhost:8000/admin.html>
+- Administración local privada: <http://localhost:8000/admin.html>
 
 Para detener el servidor presiona `Ctrl + C` en la terminal.
 
 ## Administración local
 
-La contraseña inicial de `admin.html` es:
-
-```text
-[removed]
-```
-
-Para cambiarla, edita la constante `ADMIN_PASSWORD` al inicio de `js/admin.js`.
-
-La protección es básica porque el sitio es completamente estático: evita el acceso casual, pero no reemplaza una autenticación segura. Cuando el proyecto se conecte a Supabase deberá usarse Supabase Auth y políticas de acceso.
+Los archivos `admin.html` y `js/admin.js` son privados, permanecen solo en la computadora de administración y están excluidos del repositorio mediante `.gitignore`.
 
 Desde la administración puedes:
 
@@ -36,7 +28,7 @@ Desde la administración puedes:
 - Ocultar temporalmente un producto desmarcando “Producto disponible y visible”.
 - Exportar el catálogo actualizado como `products.json`.
 
-Los cambios se guardan en `localStorage` y se ven solamente en el navegador y dispositivo donde se hicieron. También aparecen en la página pública abierta desde ese mismo navegador. Borrar los datos del navegador elimina esos cambios locales.
+Los cambios se guardan en `localStorage` y se ven solamente en el administrador del navegador y dispositivo donde se hicieron. Borrar los datos del navegador elimina esos cambios locales.
 
 Para publicar los cambios, usa **Exportar JSON** y reemplaza `data/products.json` por el archivo descargado. Si las fotografías seleccionadas desde administración aparecen como texto largo que comienza con `data:image/`, seguirán funcionando, pero para un sitio más liviano conviene aplicar el procedimiento de la sección siguiente.
 
@@ -63,15 +55,13 @@ Separa cada producto con una coma. El `id` debe ser único. El campo `precio` pu
 
 ```text
 index.html              Catálogo público
-admin.html              Administración local
 css/styles.css          Diseño adaptable
 js/app.js               Catálogo, buscador, visor y WhatsApp
-js/admin.js             Gestión local y exportación
 data/products.json      Datos de productos
 assets/images/          Logo y fotografías reales del catálogo
 ```
 
-La lectura de datos está separada en `loadProducts()` dentro de los archivos JavaScript. Esto permite sustituir posteriormente la lectura de JSON/localStorage por consultas a Supabase sin rehacer las tarjetas ni el diseño.
+La lectura de datos del catálogo público está separada en `loadProducts()` dentro de `js/app.js`.
 
 ## Publicar gratis en GitHub Pages
 
@@ -82,7 +72,7 @@ La lectura de datos está separada en `loadProducts()` dentro de los archivos Ja
 5. Selecciona la rama `main` y la carpeta `/ (root)`, y guarda.
 6. GitHub mostrará la dirección pública en unos minutos.
 
-Recuerda que `admin.html` en GitHub Pages continúa siendo una administración local; para publicar un cambio debes subir el `products.json` exportado y cualquier fotografía nueva al repositorio.
+El administrador no se publica en GitHub Pages. Para publicar un cambio debes subir el `products.json` exportado y cualquier fotografía nueva al repositorio.
 
 ## Publicar gratis en Netlify
 
