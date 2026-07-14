@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-page="public">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,11 +22,18 @@
           <small>Arte en cera</small>
         </span>
       </a>
-      <nav aria-label="Navegación principal">
-        <a href="#inicio">Inicio</a>
-        <a href="#catalogo">Catálogo</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
+      <div class="header-actions">
+        <nav aria-label="Navegación principal">
+          <a href="#inicio">Inicio</a>
+          <a href="#catalogo">Catálogo</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Activar modo oscuro" aria-pressed="false">
+          <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.4 15.2A8.7 8.7 0 0 1 8.8 3.6 8.8 8.8 0 1 0 20.4 15.2Z"/></svg>
+          <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
+          <span class="theme-label">Oscuro</span>
+        </button>
+      </div>
     </div>
   </header>
 

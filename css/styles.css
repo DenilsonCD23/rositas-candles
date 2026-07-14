@@ -140,6 +140,7 @@ h2 { font-size: clamp(2.1rem, 4.5vw, 3.6rem); letter-spacing: -.04em; }
 .brand-copy small { margin-top: 5px; color: var(--rose-600); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
 
 nav { display: flex; align-items: center; gap: clamp(16px, 3vw, 34px); }
+.header-actions { display: flex; align-items: center; gap: 22px; }
 nav a {
   position: relative;
   color: var(--ink);
@@ -159,6 +160,29 @@ nav a::after {
   transition: transform .2s ease;
 }
 nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); }
+
+.theme-toggle {
+  display: inline-flex;
+  min-height: 42px;
+  padding: 8px 13px;
+  align-items: center;
+  gap: 7px;
+  color: var(--rose-900);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  font-size: .8rem;
+  font-weight: 800;
+}
+.theme-toggle:hover { background: var(--rose-100); }
+.theme-toggle:focus-visible { outline: 3px solid rgba(200, 110, 150, .32); outline-offset: 3px; }
+.theme-icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
+.theme-icon-moon { fill: currentColor; stroke: none; }
+.theme-icon-sun { display: none; }
+html[data-theme="dark"] .theme-icon-moon { display: none; }
+html[data-theme="dark"] .theme-icon-sun { display: block; }
 
 .button {
   display: inline-flex;
@@ -638,6 +662,92 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); }
   box-shadow: var(--shadow-sm);
   font-size: 1.8rem;
   line-height: 1;
+}
+
+/* Modo oscuro exclusivo de la página pública */
+html[data-page="public"][data-theme="dark"] {
+  color-scheme: dark;
+  --rose-950: #ffe0ec;
+  --rose-900: #f7c1d8;
+  --rose-800: #eca5c3;
+  --rose-700: #df8db2;
+  --rose-600: #d97ca7;
+  --rose-500: #d56f9f;
+  --rose-300: #9d5576;
+  --rose-200: #67384e;
+  --rose-100: #3a2430;
+  --rose-50: #2c1c25;
+  --plum: #8d3f78;
+  --cream: #181116;
+  --beige: #241920;
+  --ink: #f7edf2;
+  --muted: #c9b8c1;
+  --white: #241820;
+  --border: rgba(244, 204, 220, .16);
+  --shadow-sm: 0 8px 25px rgba(0, 0, 0, .24);
+  --shadow-md: 0 18px 48px rgba(0, 0, 0, .36);
+}
+html[data-page="public"][data-theme="dark"] .site-header { background: rgba(24, 17, 22, .9); }
+html[data-page="public"][data-theme="dark"] .hero {
+  background:
+    radial-gradient(circle at 88% 15%, rgba(173, 87, 128, .22), transparent 25%),
+    radial-gradient(circle at 4% 80%, rgba(137, 91, 53, .16), transparent 28%),
+    linear-gradient(145deg, #181116, #251720 54%, #201522);
+}
+html[data-page="public"][data-theme="dark"] .catalog-section { background: #20171c; }
+html[data-page="public"][data-theme="dark"] .aromas-card {
+  background: radial-gradient(circle at 100% 0, rgba(173, 87, 128, .18), transparent 32%), linear-gradient(135deg, #2c1c25, #21171c);
+}
+html[data-page="public"][data-theme="dark"] .aromas-list li,
+html[data-page="public"][data-theme="dark"] .category-filters { background: rgba(36, 24, 32, .85); }
+html[data-page="public"][data-theme="dark"] .category-filter { background: linear-gradient(180deg, #34222c, #2c1c25); }
+html[data-page="public"][data-theme="dark"] .category-filter.is-active { background: linear-gradient(135deg, #ad5780, #75306c); }
+html[data-page="public"][data-theme="dark"] .category-filter.is-active::before { color: #642448; background: #fff; }
+html[data-page="public"][data-theme="dark"] .hero-visual img { border-color: rgba(255, 224, 236, .2); }
+html[data-page="public"][data-theme="dark"] .modal-image-wrap { background: #1b1217; }
+html[data-page="public"][data-theme="dark"] .modal-close,
+html[data-page="public"][data-theme="dark"] .zoom-hint { color: #642448; background: rgba(255,255,255,.9); }
+html[data-page="public"][data-theme="dark"] .floating-whatsapp { border-color: #f7edf2; }
+
+@media (prefers-color-scheme: dark) {
+  html[data-page="public"]:not([data-theme]) {
+    color-scheme: dark;
+    --rose-950: #ffe0ec;
+    --rose-900: #f7c1d8;
+    --rose-800: #eca5c3;
+    --rose-700: #df8db2;
+    --rose-600: #d97ca7;
+    --rose-500: #d56f9f;
+    --rose-300: #9d5576;
+    --rose-200: #67384e;
+    --rose-100: #3a2430;
+    --rose-50: #2c1c25;
+    --plum: #8d3f78;
+    --cream: #181116;
+    --beige: #241920;
+    --ink: #f7edf2;
+    --muted: #c9b8c1;
+    --white: #241820;
+    --border: rgba(244, 204, 220, .16);
+    --shadow-sm: 0 8px 25px rgba(0, 0, 0, .24);
+    --shadow-md: 0 18px 48px rgba(0, 0, 0, .36);
+  }
+  html[data-page="public"]:not([data-theme]) .theme-icon-moon { display: none; }
+  html[data-page="public"]:not([data-theme]) .theme-icon-sun { display: block; }
+  html[data-page="public"]:not([data-theme]) .site-header { background: rgba(24, 17, 22, .9); }
+  html[data-page="public"]:not([data-theme]) .hero { background: radial-gradient(circle at 88% 15%, rgba(173, 87, 128, .22), transparent 25%), radial-gradient(circle at 4% 80%, rgba(137, 91, 53, .16), transparent 28%), linear-gradient(145deg, #181116, #251720 54%, #201522); }
+  html[data-page="public"]:not([data-theme]) .catalog-section { background: #20171c; }
+  html[data-page="public"]:not([data-theme]) .aromas-card { background: radial-gradient(circle at 100% 0, rgba(173, 87, 128, .18), transparent 32%), linear-gradient(135deg, #2c1c25, #21171c); }
+  html[data-page="public"]:not([data-theme]) .aromas-list li,
+  html[data-page="public"]:not([data-theme]) .category-filters { background: rgba(36, 24, 32, .85); }
+  html[data-page="public"]:not([data-theme]) .category-filter { background: linear-gradient(180deg, #34222c, #2c1c25); }
+  html[data-page="public"]:not([data-theme]) .category-filter.is-active { background: linear-gradient(135deg, #ad5780, #75306c); }
+  html[data-page="public"]:not([data-theme]) .category-filter.is-active::before { color: #642448; background: #fff; }
+  html[data-page="public"]:not([data-theme]) .hero-visual img { border-color: rgba(255, 224, 236, .2); }
+  html[data-page="public"]:not([data-theme]) .modal-image-wrap { background: #1b1217; }
+  html[data-page="public"]:not([data-theme]) .modal-close,
+  html[data-page="public"]:not([data-theme]) .zoom-hint { color: #642448; background: rgba(255,255,255,.9); }
+  html[data-page="public"]:not([data-theme]) .floating-whatsapp { border-color: #f7edf2; }
 }
 
 /* Administración */

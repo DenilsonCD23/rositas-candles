@@ -13,9 +13,42 @@ const modalPrice = document.querySelector('#modal-price');
 const modalWhatsapp = document.querySelector('#modal-whatsapp');
 const modalClose = document.querySelector('#modal-close');
 const categoryFilters = document.querySelector('#category-filters');
+const themeToggle = document.querySelector('#theme-toggle');
+const themeLabel = themeToggle.querySelector('.theme-label');
+const themeColor = document.querySelector('meta[name="theme-color"]');
 
 let products = [];
 let activeCategory = 'todas';
+
+function currentTheme() {
+  const selectedTheme = document.documentElement.dataset.theme;
+  if (selectedTheme) return selectedTheme;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function updateThemeControl(theme) {
+  const isDark = theme === 'dark';
+  themeToggle.setAttribute('aria-pressed', String(isDark));
+  themeToggle.setAttribute('aria-label', isDark ? 'Activar modo claro' : 'Activar modo oscuro');
+  themeLabel.textContent = isDark ? 'Claro' : 'Oscuro';
+  themeColor.content = isDark ? '#21151d' : '#a24c7c';
+}
+
+function setTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  updateThemeControl(theme);
+}
+
+updateThemeControl(currentTheme());
+themeToggle.addEventListener('click', () => {
+  setTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+});
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+  if (!document.documentElement.dataset.theme) {
+    updateThemeControl(event.matches ? 'dark' : 'light');
+  }
+});
 
 function normalizeText(value) {
   return String(value)
