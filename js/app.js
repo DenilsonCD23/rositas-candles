@@ -1,5 +1,3 @@
-const PRODUCTS_URL = 'data/products.json';
-const STORAGE_KEY = 'rositasCandlesProductsV2';
 const WHATSAPP_NUMBER = '59178365055';
 
 const grid = document.querySelector('#product-grid');
@@ -51,28 +49,15 @@ function validateProducts(value) {
 }
 
 async function loadProducts() {
-  let localCatalog = [];
-  const localProducts = localStorage.getItem(STORAGE_KEY);
-  if (localProducts) {
-    try {
-      localCatalog = validateProducts(JSON.parse(localProducts));
-    } catch (error) {
-      console.warn('No se pudo leer el catálogo local.', error);
-    }
+  const response = await fetch(`data/products.json?v=${Date.now()}`, {
+    cache: 'no-store'
+  });
+
+  if (!response.ok) {
+    throw new Error('No se pudo cargar data/products.json');
   }
 
-  const response = await fetch(PRODUCTS_URL);
-  if (!response.ok) throw new Error(`No se pudo cargar ${PRODUCTS_URL}`);
-  const defaultCatalog = validateProducts(await response.json());
-  if (!localCatalog.length) return defaultCatalog;
-
-  const defaultCategories = new Map(defaultCatalog.map(product => [product.id, product.categorias]));
-  return localCatalog.map(product => ({
-    ...product,
-    categorias: Array.isArray(product.categorias) && product.categorias.length
-      ? product.categorias
-      : defaultCategories.get(product.id) || ['decorativas']
-  }));
+  return validateProducts(await response.json());
 }
 
 function productCard(product, index) {
