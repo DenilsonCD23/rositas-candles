@@ -928,6 +928,11 @@ html[data-page="admin"][data-theme="dark"] .theme-icon-sun { display: block; }
 
 @media (max-width: 520px) {
   .container { width: min(calc(100% - 22px), var(--container)); }
+  .header-inner { gap: 10px; }
+  .header-actions { gap: 10px; }
+  nav { gap: 10px; }
+  .theme-toggle { width: 42px; padding: 8px; justify-content: center; }
+  .theme-toggle .theme-label { display: none; }
   .hero-actions { display: grid; }
   .hero-actions .button { width: 100%; }
   .hero-notes { display: grid; gap: 7px; text-align: left; }
